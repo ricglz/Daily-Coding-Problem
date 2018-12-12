@@ -7,9 +7,13 @@ The order of the steps matters.
 If N is 4, then there are 5 unique ways:
 
 1, 1, 1, 1
+
 2, 1, 1
+
 1, 2, 1
+
 1, 1, 2
+
 2, 2
 
 ### Follow-up
