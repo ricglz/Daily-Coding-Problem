@@ -1,10 +1,12 @@
 #include <iostream>
 #include <deque>
+#include <vector>
 
 using namespace std;
 
-deque<int> kMax(int numbers[], int k, int n) {
+vector<int> kMax(int numbers[], int k, int n) {
   deque<int> deque(k);
+  vector<int> v;
 
   for(int i = 0; i < k; i++) {
     while(!deque.empty() && numbers[i] >= numbers[deque.back()]) {
@@ -12,6 +14,8 @@ deque<int> kMax(int numbers[], int k, int n) {
     }
     deque.push_back(i);
   }
+
+  v.push_back(numbers[deque.front()]);
 
   for(int i = k; i < n; i++) {
     while(!deque.empty() && deque.front() <= i - k) {
@@ -21,9 +25,10 @@ deque<int> kMax(int numbers[], int k, int n) {
       deque.pop_back();
     }
     deque.push_back(i);
+    v.push_back(numbers[deque.front()]);
   }
 
-  return deque;
+  return v;
 }
 
 int main() {
@@ -34,6 +39,6 @@ int main() {
     cin >> numbers[i];
   }
   cin >> k;
-  deque<int> ans = kMax(numbers, k, n);
+  vector<int> ans = kMax(numbers, k, n);
   return 0;
 }
